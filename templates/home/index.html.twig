@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil - {{ parent() }}{% endblock %}
+
+{% block body %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h1 class="card-title">Bienvenue sur Symfony Auth App</h1>
+            </div>
+            <div class="card-body">
+                {% if app.user %}
+                    <div class="alert alert-success">
+                        Vous êtes connecté en tant que {{ app.user.firstName }} {{ app.user.lastName }} ({{ app.user.email }})
+                    </div>
+                    <p>Cette application est un exemple simple d'un système d'authentification avec Symfony.</p>
+                {% else %}
+                    <div class="alert alert-info">
+                        Vous n'êtes pas connecté. Veuillez vous <a href="{{ path('app_login') }}">connecter</a> ou <a href="{{ path('app_register') }}">créer un compte</a>.
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
